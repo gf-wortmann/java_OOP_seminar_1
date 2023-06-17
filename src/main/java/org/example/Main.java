@@ -1,14 +1,25 @@
 package org.example;
 
+import java.util.Random;
+
 public class Main {
     public static void main ( String[] args ) {
+        Random position = new Random (  ); //for index of being selected man's family in generation and the family's index in it's generation
         Genus genus = new Genus ();
+        Generation selectedGeneration;
+        Family selectedFamily;
+        Human selectedHuman;
         genus.produceGenus ();
-        Human human = genus.getGenus ().get (  genus.getGenus ().size ()-4 ).getGeneration ().get ( 1 ).getHusband ();
+        selectedGeneration = genus.getGenus ().get (position.ints ( 1,genus.getGenus ().size ()-1 ).findFirst ().getAsInt ()) ;
+        selectedFamily = selectedGeneration.getGeneration ().get (position.ints ( 0, selectedGeneration.getGenerationSize () ).findFirst ().getAsInt ());
+        selectedHuman = selectedFamily.getHusband ();
+//        Human human = genus.getGenus ().get (  position.ints ( 1,genus.getGenus ().size ()-1 ).findFirst ().getAsInt ())
+//                .getGeneration ().get ( 0).getHusband ();
+//        Human human = genus.getGenus ().get (  genus.getGenus ().size ()-4 ).getGeneration ().get ( 1 ).getHusband ();
         System.out.println ( " Count of people in the genus:  " + Human.getHumanCounter () );
-        System.out.println ( "Selected human = " + human );
-        System.out.println ( "his children, totally "+human.getChildrenSet ().size ()+ " people, are: \n"  + human .getChildrenSet ());
-        DescendantsTree tree = new DescendantsTree ( human );
+        System.out.println ( "Selected human = " + selectedHuman + "from family of " + selectedHuman.getParents ().getHusband ().getName () + " and " + selectedHuman.getParents ().getWife ().getName () + " born in generation  " + selectedGeneration.getId () + " from the origin" ) ;
+        System.out.println ( "his children, totally "+selectedHuman.getChildrenSet ().size ()+ " people, are: \n"  + selectedHuman.getChildrenSet ());
+        DescendantsTree tree = new DescendantsTree ( selectedHuman );
         tree.findAllDescendants ( genus );
         System.out.println ( "All descendants of the selected human are:: " + tree);
     }

@@ -51,6 +51,6 @@ public class DescendantsTree  extends Tree {
 
     @Override
     public String toString ( ) {
-        return "Totally  "+ super.getTree ().size () + " descendants: \n" + super.getTree () ;
+        return "Totally  "+ super.getTree ().size () + " descendants: \n" ;//+ super.getTree () ;
     }
 }
