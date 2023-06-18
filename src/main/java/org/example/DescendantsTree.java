@@ -14,15 +14,17 @@ public class DescendantsTree  extends Tree {
     }
 
     public  void addDescendantsFromFamily ( Family family, Human human ){
-        ArrayList< Human > descendants = new ArrayList<> ();
+        HashSet< Human > descendants = new HashSet <> ();
         for ( Human h: family.getChildrenSet ()  ) {
             if ( h.getParents ().getHusband ().getId () == human.getId ()  ||
                     h.getParents ().getWife ().getId () ==  human.getId ()){
-                super.getTree ().add ( h );
+                descendants.add ( h );
             }
 
         }
-//        super.getTree ().addAll (  )
+        super.addAll ( descendants );
+//        System.out.println ( "descendants = " + descendants.size () );
+//        descendants.clear ();;
     }
 
     public void addDescendantsFromGeneration( Generation generation, Human human ){
@@ -38,12 +40,14 @@ public class DescendantsTree  extends Tree {
     }
 
     public  void findAllDescendants(Genus genus){
-        addDescendantsFromGenus ( genus , this.getHuman ());
-        HashSet <Human> descendants = super.getHuman ().getChildrenSet ();
+        addDescendantsFromGenus ( genus , super.getHuman ());
+        HashSet <Human> descendants = new HashSet<> ();
+        descendants.addAll ( super.getHuman ().getChildrenSet ());
         for ( int i = 0 ; i < genus.getGenerationsCount () ; i++ ) {
             for ( Human h: descendants  ) {
                 addDescendantsFromGenus ( genus, h );
             }
+            descendants.clear ();
             descendants.addAll (  super.getTree ());
         }
     }

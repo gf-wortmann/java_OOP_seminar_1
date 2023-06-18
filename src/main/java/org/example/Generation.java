@@ -46,8 +46,8 @@ public class Generation {
         if(this.generation.size ()>0){
             for ( Family family : this.generation ){
                 int maxChildrenCount = 8;
-                int minChiulrenCount = 5;
-                for ( int i = 0 ; i < childrenCount.ints ( minChiulrenCount , maxChildrenCount ).findFirst ( ).getAsInt ( ) ; i++ ) {
+                int minChildrenCount = 5;
+                for ( int i = 0 ; i < childrenCount.ints ( minChildrenCount , maxChildrenCount ).findFirst ( ).getAsInt ( ) ; i++ ) {
                     family.giveBirth ();
                 }
             }
@@ -55,25 +55,30 @@ public class Generation {
         this.marryPairs ();
     }
     private void marryPairs (){
-        ArrayList <Male> grooms = new ArrayList<> ();
-        ArrayList <Female> brides = new ArrayList<> ();
         ArrayList<Family> ancestors  = new ArrayList<> ();
-
+        ArrayList<Marryable> grooms = new ArrayList<> ();
+        ArrayList<Marryable> brides = new ArrayList<> ();
+//        System.out.println ( "!generation = " + generation.size () );
         for ( Family family :this.generation  ) {
             ancestors.add ( family );
-            for ( Human human: family.getChildrenSet () ) {
-                if(human.getClass () == Male.class ) grooms.add ( (Male) human );
-                else if (human.getClass () == Female.class ) brides.add ( (Female) human);
-                }
             }
+        for ( Family family: this.generation  ) {
+            for ( Marryable mm:  family.getChildrenSet ()   ) {
+                if ( mm.getClass () == Male.class )  grooms.add  ((Male) mm );
+                if ( mm.getClass () == Female.class )  brides.add ( (Female) mm);
+            }
+        }
+//        System.out.println ( "grooms = " + grooms.size () );
+//        System.out.println ( "brides = " + brides.size () );
         while ( !grooms.isEmpty () && !brides.isEmpty ()) {
-            Human groom = grooms.iterator ( ).next ( );
-            Human bride = brides.iterator ( ).next ( );
+            Marryable groom = grooms.iterator ( ).next ( );
+            Marryable bride = brides.iterator ( ).next ( );
             this.addFamily ( new Family ( (Male) groom , (Female) bride ) );
             grooms.remove ( groom );
             brides.remove ( bride );
         }
         generation.removeAll ( ancestors );
+//        System.out.println ( ">generation = " + generation.size () );
     }
     Family getFamilyById ( int id){
 //        Family result = new Family (  );

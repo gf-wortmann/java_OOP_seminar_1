@@ -7,8 +7,8 @@ public abstract class Pair {
     private Female wife;
 
     public void marry ( ){
-        husband.merry ( wife );
-        wife.merry ( husband );
+        husband.marry ( wife );
+        wife.marry ( husband );
     }
 
     private void init (){

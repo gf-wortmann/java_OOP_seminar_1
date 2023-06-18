@@ -11,8 +11,10 @@ public class Female extends Human{
         super ( name , parents );
     }
 
-    public void merry (Male husband) {
-        this.husband = husband;
+    public Female ( ) {
+    }
+
+    public void marry ( Marryable husband ) {this.husband = (Male) husband;
     }
     public Male getHusband ( ) {
         return husband;

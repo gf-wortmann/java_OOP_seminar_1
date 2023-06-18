@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.HashSet;
 
-public abstract class Human {
+public abstract class Human implements  Marryable {
     public static int getHumanCounter ( ) {
         return humanCounter;
     }
@@ -69,4 +69,6 @@ public abstract class Human {
     public void setParents ( Pair parents ) {
         this.parents = parents;
     }
+
+//    public abstract void marry ( Human spouse );
 }

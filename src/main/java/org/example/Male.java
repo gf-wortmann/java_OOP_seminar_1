@@ -1,6 +1,9 @@
 package org.example;
 
 public class Male extends Human{
+    public Male ( ) {
+    }
+
     private Female wife;
 
     public Male ( String name ) {
@@ -10,9 +13,8 @@ public class Male extends Human{
     public Male ( String name , Pair parents ) {
         super ( name , parents );
     }
-
-    public void merry (Female wife) {
-        this.wife = wife;
+    @Override
+    public void marry ( Marryable wife ) {this.wife = (Female) wife;
     }
 
     public Female getWife ( ) {

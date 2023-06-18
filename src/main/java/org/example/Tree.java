@@ -31,6 +31,12 @@ public abstract class Tree {
     public void setHuman ( Human human ) {
         this.human = human;
     }
+    public void addInTree(Human human){
+        this.tree.add ( human );
+    }
+    public  void  addAll(HashSet<Human> descendants){
+        this.tree.addAll ( descendants );
+    }
 
 }
 
