@@ -1,6 +1,8 @@
 package org.example;
 
-public abstract class Pair {
+import java.io.Serializable;
+
+public abstract class Pair implements Serializable {
     private static int pairCounter = 0;
     private int id;
     private Male husband;

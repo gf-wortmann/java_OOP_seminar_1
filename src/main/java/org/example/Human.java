@@ -1,8 +1,9 @@
 package org.example;
 
+import java.io.Serializable;
 import java.util.HashSet;
 
-public abstract class Human implements  Marryable {
+public abstract class Human implements  Marryable, Serializable {
     public static int getHumanCounter ( ) {
         return humanCounter;
     }

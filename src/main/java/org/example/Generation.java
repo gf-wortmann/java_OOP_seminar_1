@@ -1,9 +1,10 @@
 package org.example;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Generation {
+public class Generation implements Serializable {
     private static int generationCount = 0;
     private final int id;
     private final Random childrenCount;

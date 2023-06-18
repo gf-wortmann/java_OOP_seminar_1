@@ -1,9 +1,10 @@
 package org.example;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Random;
 
-public class Family extends Pair{
+public class Family extends Pair implements Serializable {
     private HashSet <Human> childrenSet;
     private Random childGender;
 

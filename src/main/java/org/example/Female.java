@@ -1,6 +1,8 @@
 package org.example;
 
-public class Female extends Human{
+import java.io.Serializable;
+
+public class Female extends Human implements Serializable {
     private Male husband;
 
     public Female ( String name ) {

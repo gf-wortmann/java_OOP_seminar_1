@@ -1,14 +1,15 @@
 package org.example;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Genus {
+public class Genus implements Serializable {
     private static Family initialFamily;
     private static final Male progenitor = new Male ( "Adam" );
     private static final Female progenitress = new Female ( "Eva" );
-    private static final int minGenerationsCount = 6;
-    private static final int maxGenerationsCount = 10;
+    private static final int minGenerationsCount = 4;
+    private static final int maxGenerationsCount = 5;
 
     private final ArrayList <Generation> genus;
 
