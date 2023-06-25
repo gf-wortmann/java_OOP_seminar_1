@@ -1,9 +1,9 @@
 package org.example;
 
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.*;
 
-public abstract class Human implements  Marryable, Serializable {
+public abstract class Human implements  Marryable, Serializable, Comparable<Human>, Comparator<Human>{
     public static int getHumanCounter ( ) {
         return humanCounter;
     }
@@ -71,5 +71,26 @@ public abstract class Human implements  Marryable, Serializable {
         this.parents = parents;
     }
 
-//    public abstract void marry ( Human spouse );
-}
+    @Override
+    public int compareTo ( Human human ) {
+//        return this.name.compareTo  (human.getName ());
+        return Integer.compare ( this.getId (), human.getId ());
+    }
+
+    public  int compareByName(Human human){
+        return this.name.compareTo  (human.getName ());
+    }
+
+    @Override
+    public int compare ( Human o1 , Human o2 ) {
+        return Integer.compare ( o1.getId (), o2.getId ( ) );
+    }
+
+    @Override
+    public void marry ( Marryable spouse ) {
+
+    }
+
+    }
+
+

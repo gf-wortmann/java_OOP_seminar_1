@@ -3,9 +3,12 @@ package org.example;
 import org.example.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.function.Consumer;
 
-public class DescendantsTree  extends Tree {
+public class DescendantsTree  extends Tree  {
     public DescendantsTree ( Integer id ) {
     }
 
@@ -52,9 +55,10 @@ public class DescendantsTree  extends Tree {
         }
     }
 
-
     @Override
     public String toString ( ) {
         return "Totally  "+ super.getTree ().size () + " descendants: \n" ;//+ super.getTree () ;
     }
+
+
 }

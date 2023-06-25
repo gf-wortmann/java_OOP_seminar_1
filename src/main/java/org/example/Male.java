@@ -1,6 +1,7 @@
 package org.example;
 
 import java.io.Serializable;
+import java.util.Iterator;
 
 public class Male extends Human implements Serializable {
     public Male ( ) {
@@ -22,4 +23,9 @@ public class Male extends Human implements Serializable {
     public Female getWife ( ) {
         return wife;
     }
+
+//    @Override
+//    public Iterator iterator ( ) {
+//        return null;
+//    }
 }

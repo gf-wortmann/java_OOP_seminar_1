@@ -1,7 +1,9 @@
 package org.example;
 
+import java.awt.*;
 import java.io.IOException;
-import java.util.Random;
+import java.util.*;
+import java.util.List;
 
 public class Main {
     public static void main ( String[] args ) throws IOException, ClassNotFoundException {
@@ -27,12 +29,19 @@ public class Main {
         genus2 = f.restore ( genus2, "Genus.dat" );
         System.out.println ( "genus restored= " + genus2.getGenerationsCount () + "\n");
 
-
         selectedHuman = getHuman ( position, genus2 );
         DescendantsTree tree2 = new DescendantsTree ( selectedHuman );
         tree2.findAllDescendants ( genus2);
         System.out.println ( "All descendants of the selected human are:: " + tree2);
 
+        System.out.println ("\n tree sorted by Id" );
+        for ( Human human : tree2.treeSortedById ()  ) {
+            System.out.println ( "human = " + human.getId () +" "+ human.getName () );;
+        }
+        System.out.println ("\n tree sorted by Name" );
+        for ( Human human : tree2.treeSortedByName ()  ) {
+            System.out.println ( "human = " + human.getId () +" "+ human.getName () );;
+        }
     }
 
     private static Human getHuman ( Random position , Genus genus ) {

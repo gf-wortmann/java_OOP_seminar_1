@@ -1,6 +1,7 @@
 package org.example;
 
 import java.io.Serializable;
+import java.util.Iterator;
 
 public class Female extends Human implements Serializable {
     private Male husband;
@@ -22,4 +23,14 @@ public class Female extends Human implements Serializable {
         return husband;
     }
 
+//    @Override
+//    public int compareTo ( Object o ) {
+//        Human hh = (Human) o;
+//        return Integer.compare ( this.getId (), hh.getId() );
+//    }
+
+//    @Override
+//    public Iterator iterator ( ) {
+//        return null;
+//    }
 }
